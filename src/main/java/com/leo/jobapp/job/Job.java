@@ -1,5 +1,8 @@
 package com.leo.jobapp.job;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Job {
     private Long id;
     private String title;
