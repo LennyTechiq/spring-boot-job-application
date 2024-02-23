@@ -10,14 +10,12 @@ import java.util.Optional;
 
 @Service
 public class JobServiceImpl implements JobService {
-    //private final List<Job> jobs = new ArrayList<>();
     JobRepository jobRepository;
 
     public JobServiceImpl(JobRepository jobRepository) {
         this.jobRepository = jobRepository;
     }
 
-    private Long id = 0L;
     @Override
     public List<Job> findAll() {
         return jobRepository.findAll();
@@ -25,7 +23,6 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void createJob(Job job) {
-        job.setId(++id);
         jobRepository.save(job);
     }
 
@@ -54,6 +51,7 @@ public class JobServiceImpl implements JobService {
             job.setMinSalary(updatedJob.getMinSalary());
             job.setMaxSalary(updatedJob.getMaxSalary());
             job.setLocation(updatedJob.getLocation());
+            jobRepository.save(job);
             return true;
         }
         return false;
