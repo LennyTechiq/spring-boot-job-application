@@ -1,5 +1,6 @@
 package com.leo.jobapp.company;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.leo.jobapp.job.Job;
 import jakarta.persistence.*;
 
@@ -13,7 +14,8 @@ public class Company {
     private String name;
     private String description;
     //private List<Review> reviews;
-    @OneToMany
+    @JsonIgnore
+    @OneToMany(mappedBy = "company")
     private List<Job> jobs;
 
     public Company() {
